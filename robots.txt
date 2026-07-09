@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://daxo.sh/sitemap.xml
+Sitemap: https://daxo-developer.github.io/daxo.sh/sitemap.xml
