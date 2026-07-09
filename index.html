@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DX-WASM Playground | Ahead-of-Time Compiler by Daxo</title>
+    <meta name="description" content="Interactive online playground for DX-WASM: A zero-dependency Ahead-of-Time (AOT) compiler written in Rust targeting WebAssembly bytecode.">
+    <link rel="stylesheet" href="styles.css">
+    
+    <script type="application/ld-json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://daxo.sh/#person",
+          "name": "Daxo",
+          "alternateName": "daxo-developer",
+          "url": "https://daxo.sh",
+          "knowsAbout": ["Low-level programming", "Rust (programming language)", "WebAssembly", "Operating Systems", "Cybersecurity"],
+          "sameAs": ["https://github.com/daxo-developer"]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://daxo.sh/dx-wasm/#software",
+          "name": "DX-WASM",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web, Node.js",
+          "programmingLanguage": "Rust",
+          "author": { "@id": "https://daxo.sh/#person" },
+          "codeRepository": "https://github.com/daxo-developer/parser-by-daxo",
+          "description": "An Ahead-of-Time (AOT) compiler written in Rust that compiles a custom DSL (DX) into raw WebAssembly bytecode without external dependencies."
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>DX-WASM Engine 🚀</h1>
+            <p class="subtitle">Ahead-of-Time Compiler & Custom DSL built from scratch in Rust</p>
+            <div class="badges">
+                <span class="badge rust">Rust 2021</span>
+                <span class="badge target">WASM Bytecode</span>
+                <span class="badge dev">Active Dev</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="playground-section">
+            <h2>⚡ Live AST & Bytecode Visualizer</h2>
+            <p class="section-desc">Modify the custom DX code below to see how the recursive-descent parser constructs the AST and maps it into raw native WebAssembly primitives.</p>
+            
+            <div class="playground-grid">
+                <div class="card editor-card">
+                    <div class="card-header">compiler.dx (Source Input)</div>
+                    <textarea id="code-input" spellcheck="false">fn main() {
+    let x = 5 + 3 - 2;
+}</textarea>
+                </div>
+                
+                <div class="card output-card">
+                    <div class="card-header">Abstract Syntax Tree (AST)</div>
+                    <pre><code id="ast-output">Loading parser state...</code></pre>
+                </div>
+
+                <div class="card output-card hex-card">
+                    <div class="card-header">Raw WebAssembly Byte Stream (Hex Dump)</div>
+                    <pre><code id="hex-output">Loading binary pipeline...</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="docs-section">
+            <h2>📐 Architectural Specification</h2>
+            <article>
+                <h3>1. Lexical Analysis & Tokenization</h3>
+                <p>The compilation pipeline bypasses heavy consumer frameworks. The custom Rust Lexer processes raw character streams directly into isolated lexical tokens such as <code>Token::Fn</code>, <code>Token::Let</code>, and left-to-right evaluation groups, reducing allocations to absolute zero.</p>
+            </article>
+            
+            <article>
+                <h3>2. V8 Engine Memory & FFI Alignment</h3>
+                <p>The bytecode generator directly outputs binary arrays compliant with the native WebAssembly specification. Variables are mapped to flat local indices via <code>local.set</code> and <code>local.get</code>, and FFI boundaries are integrated natively using an optimized binary Import Section structure linked to the JavaScript host container.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Engine designed by <a href="https://github.com/daxo-developer" target="_blank">daxo-developer</a>. Distributed under a multi-licensing matrix (MIT / Apache 2.0 / GPL v3).</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
